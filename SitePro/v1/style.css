@@ -1,0 +1,25 @@
+.box {
+    display: flex;
+}
+
+.contenu {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu {
+    color: black;
+    background-color: rgb(156, 156, 182);
+    margin: 10px;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    background-color: rgb(20, 83, 241);
+    font: Arial, sans-serif;
+}
+
+#currentpage {
+    background-color: rgb(104, 104, 113);
+}
