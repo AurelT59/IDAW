@@ -3,32 +3,29 @@ body {
     margin: 0%;
 }
 
-h1 {
-    /*position: absolute;*/
+.top {
+    position: sticky;
     background-color: rgb(20, 83, 241);
     padding: 10px;
     size: 80px;
-    left: 0;
-    right: 0;
-    top: 0;
-    margin-left: 0px;
+    /* margin-left: 0px;
     margin-right: 0px;
-    margin-top: 0px;
+    margin-top: 0px; */
+    top: 0;
 }
 
 .innerBody {
     display: flex;
+    padding-top: 3px;
 }
 
 .leftSide {
-    /* position: absolute; */
     display: flex;
     flex-direction: column;
     left: 0;
     width: 200px;
     height: 100%;
     margin-right: 20px;
-
 }
 
 .menu {
@@ -40,13 +37,12 @@ h1 {
     display: flex;
     border: 2px solid rgb(104, 104, 113);
     flex-direction: column;
-    /*position: absolute;*/
     left: 0;
 }
 
 .indexClick {
     display: inline-block;
-    border: 2px solid rgb(104, 104, 113);
+    border: 2px solid rgb(6, 6, 6);
     margin: 2px;
 }
 
@@ -57,7 +53,6 @@ h1 {
 .contenu {
     display: flex;
     flex-direction: column;
-    /* flex-direction: column; */
 }
 
 h3 {
@@ -69,10 +64,13 @@ li {
 }
 
 .bottom {
-    position: absolute;
+    padding-top: 1px;
+    position: sticky;
     bottom: 0;
     padding-left: 4px;
     background-color: black;
     color: white;
     width: 100%;
+    margin-bottom: 0%;
+    padding-bottom: 4px;
 }
