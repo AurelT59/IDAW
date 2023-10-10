@@ -4,14 +4,19 @@ body {
 }
 
 .top {
+    display: flex;
     position: sticky;
     background-color: rgb(20, 83, 241);
     padding: 10px;
     size: 80px;
-    /* margin-left: 0px;
-    margin-right: 0px;
-    margin-top: 0px; */
     top: 0;
+}
+
+#portrait {
+    height: 100px;
+    padding: 2px;
+    background-color: black;
+    margin-left: 100px;
 }
 
 .innerBody {
@@ -44,6 +49,7 @@ body {
     display: inline-block;
     border: 2px solid rgb(6, 6, 6);
     margin: 2px;
+    padding: 2px;
 }
 
 #currentpage {
@@ -64,13 +70,13 @@ li {
 }
 
 .bottom {
-    padding-top: 1px;
     position: sticky;
     bottom: 0;
-    padding-left: 4px;
+    padding-left: 10px;
     background-color: black;
     color: white;
     width: 100%;
     margin-bottom: 0%;
+    padding-top: 1px;
     padding-bottom: 4px;
 }
