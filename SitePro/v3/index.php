@@ -17,26 +17,41 @@
     ?>
 
     <div class="innerBody">
+
+        <div class="leftSide">
+            <?php
+            require_once('template_menu.php');
+
+            $currentPageId = 'accueil';
+            if (isset($_GET['page'])) {
+                $currentPageId = $_GET['page'];
+            }
+
+            $lang = "fr";
+            if (isset($_GET['lg'])) {
+                $lang = $_GET['lg'];
+            }
+
+            renderMenuToHTML($currentPageId, $lang);
+
+            $refFr = 'index.php?page=' . $currentPageId . '&lg=fr';
+            $refEn = 'index.php?page=' . $currentPageId . '&lg=en';
+            ?>
+
+            <div class="langue">
+                <a class="langueClick" href=<?php echo $refFr ?>>FR</a>
+                <a class="langueClick" href=<?php echo $refEn ?>>EN</a>
+            </div>
+        </div>
+
         <?php
-        require_once('template_menu.php');
-
-        $currentPageId = 'accueil';
-        if (isset($_GET['page'])) {
-            $currentPageId = $_GET['page'];
-        }
-
-        renderMenuToHTML($currentPageId);
+        $pageToInclude = $lang . "/" . $currentPageId . ".php";
+        if (is_readable($pageToInclude))
+            require_once($pageToInclude);
+        else
+            require_once("error.php");
         ?>
 
-        <section class="corps">
-            <?php
-            $pageToInclude = $currentPageId . ".php";
-            if (is_readable($pageToInclude))
-                require_once($pageToInclude);
-            else
-                require_once("error.php");
-            ?>
-        </section>
     </div>
 
     <?php

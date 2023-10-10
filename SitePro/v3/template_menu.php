@@ -10,7 +10,7 @@
 <body>
 
     <?php
-    function renderMenuToHTML($currentPageId)
+    function renderMenuToHTML($currentPageId, $lang)
     {
         $mymenu = array(
             'accueil' => array('Accueil'),
@@ -20,19 +20,17 @@
             'coordonnees' => array('Mes coordonées')
         );
 
-        echo '<div class="leftSide">
-        <nav class="menu">';
+        echo '<nav class="menu">';
 
         foreach ($mymenu as $pageId => $pageParameters) {
             if ($pageId == $currentPageId) {
-                echo '<a class="indexClick" id=currentpage href="index.php?page=' . $pageId . '">' . $pageParameters[0] . '</a>';
+                echo '<a class="indexClick" id=currentpage href="index.php?page=' . $pageId . '&lg=' . $lang . '">' . $pageParameters[0] . '</a>';
             } else {
-                echo '<a class="indexClick" href="index.php?page=' . $pageId . '">' . $pageParameters[0] . '</a>';
+                echo '<a class="indexClick" href="index.php?page=' . $pageId . '&lg=' . $lang . '">' . $pageParameters[0] . '</a>';
             }
         }
 
-        echo '</nav>
-        </div>';
+        echo '</nav>';
     }
     ?>
 
