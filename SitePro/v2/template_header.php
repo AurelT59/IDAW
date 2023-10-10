@@ -8,7 +8,7 @@
 
 <body>
     <div class="top">
-        <h1> Aurélien Terrades </h1>
+        <h1 class="mainTitle"> Aurélien Terrades </h1>
         <img id="portrait" src="img/photo portrait.jpg">
     </div>
 </body>
