@@ -13,7 +13,7 @@
 <body>
 
     <div class="contenu">
-        <h3>Infos Pratiques !</h3>
+        <h3>Practical Informations !</h3>
     </div>
 
 </body>

@@ -12,13 +12,24 @@
     <?php
     function renderMenuToHTML($currentPageId, $lang)
     {
-        $mymenu = array(
-            'accueil' => array('Accueil'),
-            'cv' => array('Cv'),
-            'projets' => array('Mes Projets'),
-            'info_pratiques' => array('Infos Pratiques'),
-            'coordonnees' => array('Mes coordonées')
-        );
+        if ($lang == 'fr') {
+            $mymenu = array(
+                'accueil' => array('Accueil'),
+                'cv' => array('CV'),
+                'projets' => array('Mes Projets'),
+                'info_pratiques' => array('Infos Pratiques'),
+                'coordonnees' => array('Mes coordonées')
+            );
+        } else {
+            $mymenu = array(
+                'accueil' => array('Welcome'),
+                'cv' => array('CV'),
+                'projets' => array('Projects'),
+                'info_pratiques' => array('Practical Informations'),
+                'coordonnees' => array('Contact Details')
+            );
+        }
+
 
         echo '<nav class="menu">';
 
