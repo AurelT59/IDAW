@@ -35,16 +35,28 @@
         if (array_key_exists($tryLogin, $users) && $users[$tryLogin] == $tryPwd) {
             $successfullyLogged = true;
             $login = $tryLogin;
+            session_start();
+            $_SESSION['newsession'] = $_POST['login'];
         } else
             $errorText = "Erreur de login/password";
-    } else
-        $errorText = "Merci d'utiliser le formulaire de login";
+    } else {
+        session_start();
+        if (isset($_SESSION['newsession'])) {
+            echo 'Session de ' . $_SESSION['newsession'];
+        } else {
+            $errorText = "Merci d'utiliser le formulaire de login";
+        }
+    }
     if (!$successfullyLogged) {
         echo $errorText;
     } else {
+        echo 'Session de ' . $_SESSION['newsession'];
         echo "<h1>Bienvenu " . $login . "</h1>";
     }
     ?>
+
+    <a href="index.php">Index</a>
+    <a href="disconnected.php">Se déconnecter</a>
 </body>
 
 </html>
