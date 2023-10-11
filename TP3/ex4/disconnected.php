@@ -13,7 +13,7 @@
     session_start();
     session_unset();
     session_destroy();
-    echo 'Déconnecté'
+    echo 'Déconnecté';
     ?>
 
     <a href='login.php'>Se reconnecter</a>
