@@ -40,7 +40,7 @@
                 </ul>
             </li>
             <li>
-                <p>Stagiaire Développeur Back-End, Capgemini, juin-août 2023</p>
+                <p>Stagiaire logistique, Geodis, février-avril 2021</p>
                 <ul>
                     <li>préparation de commandes avec SAP</li>
                     <li>assistance dans des tâches de gestion des stocks</li>

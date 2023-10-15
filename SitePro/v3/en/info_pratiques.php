@@ -14,6 +14,10 @@
 
     <div class="contenu">
         <h3>Practical Informations !</h3>
+        <p>I am curently looking for an internship, here is everything there is to know :</p>
+        <p>Duration : 16 weeks</p>
+        <p>Availability : from 06/05/24 to 23/08/24</p>
+        <p>Area of interest : Programming</p>
     </div>
 
 </body>

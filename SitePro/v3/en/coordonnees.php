@@ -13,10 +13,10 @@
 <body>
 
     <div class="contenu">
-        <h3>Mes coordonnées</h3>
-        <p> Tel. : 06 66 66 66 66 </p>
-        <p> Mail : aurelien.terrades@gmail.com </p>
-        <p> Adresse : 5 rue Charles Bourseul, 59500, Douai </p>
+        <h3>Contact Details</h3>
+        <p> Phone : 06 66 66 66 66 </p>
+        <p> E-mail : aurelien.terrades@gmail.com </p>
+        <p> Adress : 5 rue Charles Bourseul, 59500, Douai </p>
     </div>
 
 </body>

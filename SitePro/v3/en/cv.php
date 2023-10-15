@@ -13,11 +13,11 @@
 <body>
 
     <div class="contenu">
-        <h3>Formation / Diplome :</h3>
+        <h3>Education / Degree </h3>
         <ul>
-            <li>2023/2025 : Cycle Ingénieur - Institut Mines-Telecom Nord Europe
-                (Anciennement Mines de Douai), Douai, 59500</li>
-            <li>2020/2022 : Cycle Préparatoire Scientifique - Institut Mines-Telecom Nord Europe, Villeneuve
+            <li>2023/2025 : Engineer cycle - Institut Mines-Telecom Nord Europe
+                (Formerly Mines de Douai), Douai, 59500</li>
+            <li>2020/2022 : Science Preparatory cycle - Institut Mines-Telecom Nord Europe, Villeneuve
                 d'Ascq, 59650</li>
             <li>2019/2020 : Baccalauréat S-SVT, Spécialité Mathématiques, Option Européenne Espagnol, mention Très
                 Bien - Lycée Villaroy, Guyancourt, 78280</li>
@@ -25,26 +25,26 @@
         <h3>Experience professionnelle :</h3>
         <ul>
             <li>
-                <p>Stagiaire Développeur Back-End, Capgemini, juin-août 2023</p>
+                <p>Intern Backend Developer, Capgemini, June-August 2023</p>
                 <ul>
-                    <li>intégration à un projet en Cycle en V</li>
-                    <li>développement en Java d'une application en contexte Spring</li>
+                    <li>Integration into a V-cycle project</li>
+                    <li>Java development of a Spring context application</li>
                 </ul>
             </li>
             <li>
-                <p>Stagiaire Avant-Vente et R&D, Mitel France, mai-juillet 2022</p>
+                <p>Intern Pre-Sales and R&D, Mitel France, May-July 2022</p>
                 <ul>
-                    <li>familiarisation avec la technologie SIP</li>
-                    <li>rédaction d'un guide produit</li>
-                    <li>tests de logiciels de télécommunication</li>
+                    <li>Familiarization with SIP technology</li>
+                    <li>Product guide writing</li>
+                    <li>Telecommunication software testing</li>
                 </ul>
             </li>
             <li>
-                <p>Stagiaire Développeur Back-End, Capgemini, juin-août 2023</p>
+                <p>Logistics Intern, Geodis, February-April 2021</p>
                 <ul>
-                    <li>préparation de commandes avec SAP</li>
-                    <li>assistance dans des tâches de gestion des stocks</li>
-                    <li>contrôle d'inventaire</li>
+                    <li>Order preparation with SAP</li>
+                    <li>Assistance in stock management tasks</li>
+                    <li>Inventory control</li>
                 </ul>
             </li>
         </ul>

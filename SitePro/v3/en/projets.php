@@ -12,16 +12,15 @@
 <body>
 
     <div class="contenu">
-        <h3> Developpement d'un site web professionnel </h3>
-        <p> Ce site même a été réalisé par mes soins dans le cadre de l'UV IDAW durant ma formation à l'IMT Nord
-            Europe. </p>
+        <h3> Creation of a website </h3>
+        <p> This very website was created by me as part of the IDAW course during my studies at IMT North Europe. </p>
         <h3> "Streinger Town" </h3>
-        <p> En UV Projet Ouvert, j'ai donné des cours de programmation en langage C à des collégiens du collège André
-            <br>Streinger de Douai, dans le but de réaliser avec les élèves une voiture autonome.
+        <p> In the Open Project UV, I taught C programming classes to middle school students from André Streinger
+            <br>College in Douai, with the aim of building an autonomous car with the students.
         </p>
         <h3> CAPA 2023 (Comité d'Accueil des Premiers Arrivants) </h3>
-        <p> En septembre 2023 j'ai participé à l'accueil de la nouvelle promotion d'élèves ingénieurs sur le campus de
-            <br> Douai de l'IMT Nord Europe.
+        <p> In September 2023, I participated in welcoming the new class of engineering students at the Douai
+            <br> campus of IMT North Europe.
         </p>
     </div>
 

@@ -16,7 +16,7 @@
         <h3>Infos Pratiques !</h3>
         <p>Je suis actuellement en recherche de stage, voici tout ce qu'il faut savoir :</p>
         <p>Durée : 16 semaines</p>
-        <p>Disponibilité : du 06/05 au 23/08</p>
+        <p>Disponibilité : du 06/05/24 au 23/08/24</p>
         <p>Activité recherchée : Développement Informatique</p>
     </div>
 
