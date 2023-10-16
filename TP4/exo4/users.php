@@ -20,14 +20,37 @@
         $addRequest = $pdo->prepare("INSERT INTO `users` (`id`, `name`, `email`) VALUES ('','" . $_POST['name'] . "','" . $_POST['mail'] . "')");
         $addRequest->execute();
     }
-    if (isset($_POST['id']) & isset($_POST['delete'])) {
-        $deleteRequest = $pdo->prepare("DELETE FROM `users` WHERE `id` = " . $_POST['id']);
+    if (isset($_POST['modifyId'])) {
+        echo '<form action="users.php" method="post">
+        <table>
+            <tr>
+                <td>
+                    <p>Nouveau nom</p>
+                </td>
+                <td><input type="text" name="nameChange" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Nouveau mail</p>
+                </td>
+                <td><input type="text" name="mailChange" /></td>
+            </tr>
+            <tr>
+                <input type="hidden" value=' . $_POST['modifyId'] . ' name="changeId" />
+                <td><input type="submit" value="Effectuer" name="change"  /></td>
+            </tr>
+        </table>
+    </form>';
+    }
+    if (isset($_POST['changeId'])) {
+        $modifyRequest = $pdo->prepare("UPDATE users SET name = '" . $_POST['nameChange'] . "', email = '" . $_POST['mailChange'] . "' WHERE id = " . $_POST['changeId']);
+        $modifyRequest->execute();
+    }
+
+    if (isset($_POST['deleteId'])) {
+        $deleteRequest = $pdo->prepare("DELETE FROM `users` WHERE `id` = " . $_POST['deleteId']);
         $deleteRequest->execute();
     }
-    // if (isset($_POST['name']) & isset($_POST['mail'])) {
-    //     $addRequest = $pdo->prepare("INSERT INTO `users` (`id`, `name`, `email`) VALUES ('','" . $_POST['name'] . "','" . $_POST['mail'] . "')");
-    //     $addRequest->execute();
-    // }
 
     $request = $pdo->prepare("select * from users");
     // retrieve data from database using fetch(PDO::FETCH_OBJ) and
@@ -51,15 +74,15 @@
             echo '<td>' . $champ . '</td>';
         }
         echo '<td> 
-                <form action="users.php" method=post"> 
-                    <input type="hidden" value="' . $champ . '" name="id" /> 
-                    <input type="submit" value="Modifier" name ="modify" /> 
+                <form action="users.php" method="post"> 
+                    <input type="hidden" value=' . $user->id . ' name="modifyId" /> 
+                    <input type="submit" value="Modifier" /> 
                 </form>
             </td>
             <td>
-                <form action="users.php" method=post"> 
-                    <input type="hidden" value="' . $champ . '" name="id" /> 
-                    <input type="submit" value="Supprimer" name ="delete" /> 
+                <form action="users.php" method="post"> 
+                    <input type="hidden" value=' . $user->id . ' name="deleteId" /> 
+                    <input type="submit" value="Supprimer"/> 
                 </form>
             </td> </tr>';
     }
