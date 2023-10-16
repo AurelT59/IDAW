@@ -16,8 +16,20 @@
 
     require_once('db_connect.php');
 
+    if (isset($_POST['name']) & isset($_POST['mail'])) {
+        $addRequest = $pdo->prepare("INSERT INTO `users` (`id`, `name`, `email`) VALUES ('','" . $_POST['name'] . "','" . $_POST['mail'] . "')");
+        $addRequest->execute();
+    }
+    if (isset($_POST['id']) & isset($_POST['delete'])) {
+        $deleteRequest = $pdo->prepare("DELETE FROM `users` WHERE `id` = " . $_POST['id']);
+        $deleteRequest->execute();
+    }
+    // if (isset($_POST['name']) & isset($_POST['mail'])) {
+    //     $addRequest = $pdo->prepare("INSERT INTO `users` (`id`, `name`, `email`) VALUES ('','" . $_POST['name'] . "','" . $_POST['mail'] . "')");
+    //     $addRequest->execute();
+    // }
+
     $request = $pdo->prepare("select * from users");
-    // TODO: add your code here
     // retrieve data from database using fetch(PDO::FETCH_OBJ) and
     // display them in HTML array
     $request->execute();
@@ -38,7 +50,18 @@
         foreach ($user as $champ) {
             echo '<td>' . $champ . '</td>';
         }
-        echo '</tr>';
+        echo '<td> 
+                <form action="users.php" method=post"> 
+                    <input type="hidden" value="' . $champ . '" name="id" /> 
+                    <input type="submit" value="Modifier" name ="modify" /> 
+                </form>
+            </td>
+            <td>
+                <form action="users.php" method=post"> 
+                    <input type="hidden" value="' . $champ . '" name="id" /> 
+                    <input type="submit" value="Supprimer" name ="delete" /> 
+                </form>
+            </td> </tr>';
     }
     echo '</tbody>';
     echo '</table>';
@@ -46,6 +69,26 @@
     /*** close the database connection ***/
     $pdo = null;
     ?>
+
+    <form action="users.php" method="post">
+        <table>
+            <tr>
+                <td>
+                    <p>Nom</p>
+                </td>
+                <td><input type="text" name="name" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Mail</p>
+                </td>
+                <td><input type="text" name="mail" /></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Ajouter" name="add" /></td>
+            </tr>
+        </table>
+    </form>
 
 </body>
 

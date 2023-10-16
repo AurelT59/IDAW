@@ -17,6 +17,7 @@
     require_once('db_connect.php');
 
     $request = $pdo->prepare("select * from users");
+    // TODO: add your code here
     // retrieve data from database using fetch(PDO::FETCH_OBJ) and
     // display them in HTML array
     $request->execute();
@@ -37,7 +38,7 @@
         foreach ($user as $champ) {
             echo '<td>' . $champ . '</td>';
         }
-        echo '<input type="submit" name="Modifier"/> <input type="submit" name="Supprimer"/> </tr>';
+        echo '</tr>';
     }
     echo '</tbody>';
     echo '</table>';
@@ -45,10 +46,6 @@
     /*** close the database connection ***/
     $pdo = null;
     ?>
-
-    <form>
-        <input type="submit" name="Modifier" />
-    </form>
 
 </body>
 
