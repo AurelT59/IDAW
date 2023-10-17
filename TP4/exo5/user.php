@@ -9,7 +9,6 @@ $request_uri = $_SERVER['REQUEST_URI'];
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
-
         $segments = explode('/', trim($request_uri, '/'));
         $id = $segments[4];
 
@@ -18,9 +17,10 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
         $result = $request->fetchAll(PDO::FETCH_OBJ);
 
-        echo json_encode($result);
+        checkAndResponse($request, $result);
         break;
     default:
+        http_response_code(405);
         echo json_encode(array('message' => 'Méthode non autorisée'));
         break;
 }

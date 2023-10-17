@@ -11,7 +11,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $request->execute();
         $result = $request->fetchAll(PDO::FETCH_OBJ);
 
-        echo json_encode($result);
+        checkAndResponse($request, $result);
         break;
 
     case 'POST':
@@ -22,7 +22,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $request->execute();
         $result = $request->fetchAll(PDO::FETCH_OBJ);
 
-        echo json_encode($result);
+        checkAndResponse($request, $result);
         break;
 
     case 'PUT':
@@ -33,7 +33,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $request->execute();
         $result = $request->fetchAll(PDO::FETCH_OBJ);
 
-        echo json_encode($result);
+        checkAndResponse($request, $result);
         break;
 
     case 'DELETE':
@@ -43,10 +43,11 @@ switch ($_SERVER['REQUEST_METHOD']) {
         $request->execute();
         $result = $request->fetchAll(PDO::FETCH_OBJ);
 
-        echo json_encode($result);
+        checkAndResponse($request, $result);
         break;
 
     default:
+        http_response_code(405);
         echo json_encode(array('message' => 'Méthode non autorisée'));
         break;
 }
