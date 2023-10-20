@@ -7,6 +7,7 @@ require_once('db_connect.php');
 
 switch ($_SERVER['REQUEST_METHOD']) {
     case 'GET':
+
         $request = $pdo->prepare("SELECT * FROM users");
         $request->execute();
         $result = $request->fetchAll(PDO::FETCH_OBJ);
@@ -16,7 +17,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
     case 'POST':
 
-        $data = json_decode(file_get_contents("php://input"));
+        $data = json_decode(file_get_contents("php://input"), true);
 
         $request = $pdo->prepare("INSERT INTO `users` (`id`, `name`, `email`) VALUES ('','" . $data['name'] . "','" . $data['mail'] . "')");
         $request->execute();
@@ -27,9 +28,9 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
     case 'PUT':
 
-        $data = json_decode(file_get_contents("php://input"));
+        $data = json_decode(file_get_contents("php://input"), true);
 
-        $request = $pdo->prepare("UPDATE users SET name = '" . $data['name'] . "', email = '" . $data['mail'] . "' WHERE id = " . $data['changeId']);
+        $request = $pdo->prepare("UPDATE users SET name = '" . $data['name'] . "', email = '" . $data['mail'] . "' WHERE id = " . $data['id']);
         $request->execute();
         $result = $request->fetchAll(PDO::FETCH_OBJ);
 
@@ -37,7 +38,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         break;
 
     case 'DELETE':
-        $data = json_decode(file_get_contents("php://input"));
+        $data = json_decode(file_get_contents("php://input"), true);
 
         $request = $pdo->prepare("DELETE FROM `users` WHERE `id` = " . $data['id']);
         $request->execute();
