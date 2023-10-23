@@ -22,6 +22,8 @@
 </head>
 
 <body>
+
+    <!-- datatable -->
     <table class="table" id="mainTab">
         <thead>
             <tr>
@@ -35,6 +37,7 @@
         </tbody>
     </table>
 
+    <!-- formulaire d'ajout -->
     <form id="addEntry" action="" onsubmit="onFormSubmit();">
         <div class="form-group row">
             <label for="inputNom" class="col-sm-2 col-form-label" required>Nom*</label>
@@ -61,17 +64,45 @@
         </div>
     </form>
 
+    <!-- pop up d'édition -->
     <div class="modal fade" id="maModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalLabel">Fenêtre Pop-up Bootstrap</h5>
+                    <h5 class="modal-title" id="modalLabel">Fenêtre d'édition</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Contenu de la fenêtre pop-up Bootstrap.</p>
+
+                    <!-- formulaire d'édition -->
+                    <form id="modifyEntry" action="" onsubmit="onEditSecondSubmit();">
+                        <div class="form-group row">
+                            <label for="inputNewNom" class="col-sm-2 col-form-label" required>Nom*</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="inputNewNom">
+                            </div>
+                            <div class="col-sm-3">
+                                <p id="inputNewNomRequis"></p>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputNewMail" class="col-sm-2 col-form-label">E-Mail</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="inputNewMail">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <span class="col-sm-2"></span>
+                            <div class="col-sm-2">
+                                <button type="submit" class="btn btn-primary form-control">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
@@ -86,47 +117,90 @@
         let table = new DataTable('#mainTab', {
             columnDefs: [
                 { targets: 0, data: 'id' },
-                { targets: 1, data: 'nom' },
-                { targets: 2, data: 'mail' },
+                { targets: 1, data: 'name' },
+                { targets: 2, data: 'email' },
                 {
                     targets: 3,
                     data: null,
                     render: function (data, type, row) {
-                        return '<button class="btn-editer">Éditer</button><button class="btn-supprimer">Supprimer</button>';
+                        return '<button id="edit" onclick="onEditFirstSubmit();">Éditer</button><button id="delete" onclick="onDeleteSubmit();">Supprimer</button>';
                     }
                 }
             ]
         });
 
+        function defaultRows() {
+            table.row.add({ "id": 0, "name": "emanuel", "email": "gmail" }).draw();
+            table.row.add({ "id": 1, "name": "paul", "email": "yahoo" }).draw();
+            table.row.add({ "id": 2, "name": "jack", "email": "wanadoo" }).draw();
+        }
+
+        $.ajax({
+            url: 'http://localhost/IDAW/TP4/exo5/users',
+            method: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                // Remplir le DataTable avec les données récupérées
+                table.clear().rows.add(data).draw();
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+
+        // action ajouter
         function onFormSubmit() {
             // prevent the form to be sent to the server
             event.preventDefault();
 
-            console.log(table);
+            // console.log(table);
             let nom = $("#inputNom").val();
 
             if (!(nom === "")) {
                 let mail = $("#inputMail").val();
-                let id = '0';
+                let id = 0;
                 $("#inputNomRequis").html("");
 
 
-                table.row.add(id, nom, mail,
-                    '<input type="button" id="edit" value="Edit" onclick="onEditSubmit();">'
-                    + '<input type="button" id="delete" value="Delete" onclick="onDeleteSubmit();">').draw();
+                table.row.add({ "id": id, "name": nom, "email": mail }).draw();
             } else {
                 $("#inputNomRequis").html("Champ requis");
             }
         }
 
-        function onEditSubmit() {
+        var stockRow;
+        // action éditer
+        function onEditFirstSubmit() {
+            var row = table.row(event.target.closest('tr'));
             $('#maModal').modal('show');
+            stockRow = row;
         }
 
-        function onDeleteSubmit() {
-            var rowNumber = table.cell($(this).closest('td')).index.row;
 
-            table.row(rowNumber).remove().draw();
+
+        function onEditSecondSubmit() {
+            event.preventDefault();
+
+            let newNom = $("#inputNewNom").val();
+
+            if (!(newNom === "")) {
+                let newMail = $("#inputNewMail").val();
+                let newId = 0;
+                $("#inputNewNomRequis").html("");
+
+                stockRow.data({ "id": newId, "name": newNom, "email": newMail }).draw();
+                $('#maModal').modal('hide');
+                stockRow = null;
+            } else {
+                $("#inputNomRequis").html("Champ requis");
+            }
+        }
+
+        //action supprimer
+        function onDeleteSubmit() {
+            var row = table.row(event.target.closest('tr'));
+            row.remove().draw();
         }
     </script>
 </body>
