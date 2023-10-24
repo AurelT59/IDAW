@@ -7,7 +7,7 @@ define('_MYSQL_PASSWORD', '');
 
 function checkAndResponse($request, $result)
 {
-    if (empty($result)) {
+    if (empty($result) & $_SERVER['REQUEST_METHOD'] != 'POST') {
         // Aucune donnée trouvée, renvoyer un statut 404 - Not Found
         http_response_code(404);
         echo json_encode(array('message' => "Aucun utilisateur trouvé."));

@@ -158,15 +158,31 @@
             let nom = $("#inputNom").val();
 
             if (!(nom === "")) {
+
                 let mail = $("#inputMail").val();
+                let dataStock;
                 let id = 0;
+
+                $.ajax({
+                    url: 'http://localhost/IDAW/TP4/exo5/users',
+                    method: 'POST',
+                    dataType: 'json',
+                    data: JSON.stringify({ name: nom, email: mail, id: id }),
+                    contentType: 'application/json',
+                    success: function (data) {
+                        table.row.add({ "id": dataStock['id'], "name": nom, "email": mail }).draw();
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+
                 $("#inputNomRequis").html("");
 
-
-                table.row.add({ "id": id, "name": nom, "email": mail }).draw();
             } else {
                 $("#inputNomRequis").html("Champ requis");
             }
+
         }
 
         var stockRow;
